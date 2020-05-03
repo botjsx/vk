@@ -1,0 +1,22 @@
+{
+  "name": "@botjsx/vk",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/botjsx/vk.git"
+  },
+  "author": "Vitaly Logvinenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/botjsx/vk/issues"
+  },
+  "homepage": "https://github.com/botjsx/vk#readme",
+  "peerDependencies": {
+    "botjsx": "0.0.4"
+  }
+}
