@@ -24,8 +24,12 @@
     "botjsx": "0.0.4"
   },
   "devDependencies": {
+    "botjsx": "0.0.4",
     "mocha": "^7.1.2",
     "shelljs": "^0.8.4",
     "sinon": "^9.0.2"
+  },
+  "dependencies": {
+    "request": "^2.88.2"
   }
 }

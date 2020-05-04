@@ -1,0 +1,20 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:hello-world": "node hello-world/index.js",
+    "start:hello-world:debug": "node --inspect hello-world/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-transform-react-jsx": "^7.9.4",
+    "@babel/register": "^7.9.0"
+  },
+  "dependencies": {
+    "dotenv-flow": "^3.1.0"
+  }
+}

@@ -3,7 +3,16 @@ const vkApi = require('./utils/vkApi');
 const LongPoll = require('./utils/LongPoll');
 const createReplyActions = require('./utils/createReplyActions');
 
-function InitBot({accessToken, account, serviceAccessToken, userAccessToken, children}) {
+function InitBot({
+  accessToken,
+  account,
+  serviceAccessToken,
+  userAccessToken,
+  children,
+  logger
+}) {
+  if (!accessToken) throw new Error('accessToken is required');
+  if (!account) throw new Error('account is required');
   const setContext = Bot.createContext();
   const useReplyAction = createReplyActions();
 
@@ -17,7 +26,8 @@ function InitBot({accessToken, account, serviceAccessToken, userAccessToken, chi
   setContext({
     vkApi,
     longPoll,
-    useReplyAction
+    useReplyAction,
+    logger
   });
 
   return children;

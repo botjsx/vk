@@ -4,7 +4,8 @@ const ButtonsRow = require('./ButtonsRow');
 const Button = require('./Button');
 const Event = require('./Event');
 const InitBot = require('./InitBot');
-const ResolveUpdate = require('./ResolveUpdate');
+const ListenUpdate = require('./ListenUpdate');
+const OnNewMessage = require('./OnNewMessage');
 const ReplyAction = require('./ReplyAction');
 const CheckText = require('./CheckText');
 const useVkApi = require('./hooks/useVkApi');
@@ -18,9 +19,10 @@ module.exports = {
   Button,
   Event,
   InitBot,
-  ResolveUpdate,
+  ListenUpdate,
   ReplyAction,
   CheckText,
+  OnNewMessage,
   useReplyAction,
   useVkApi,
   useVkUpdate
