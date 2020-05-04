@@ -10,6 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/botjsx/vk.git"
   },
+  "files": [
+    "LICENSE",
+    "src/"
+  ],
   "author": "Vitaly Logvinenko",
   "license": "MIT",
   "bugs": {
@@ -18,5 +22,10 @@
   "homepage": "https://github.com/botjsx/vk#readme",
   "peerDependencies": {
     "botjsx": "0.0.4"
+  },
+  "devDependencies": {
+    "mocha": "^7.1.2",
+    "shelljs": "^0.8.4",
+    "sinon": "^9.0.2"
   }
 }
