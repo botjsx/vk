@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:hello-world": "node hello-world/index.js",
-    "start:hello-world:debug": "node --inspect hello-world/index.js"
+    "start": "node hello-world/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +14,8 @@
     "@babel/register": "^7.9.0"
   },
   "dependencies": {
+    "@botjsx/vk": "0.0.1",
+    "botjsx": "0.0.6",
     "dotenv-flow": "^3.1.0"
   }
 }

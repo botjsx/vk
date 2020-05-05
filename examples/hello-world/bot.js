@@ -1,6 +1,6 @@
 require('dotenv-flow').config();
 const Bot = require('botjsx');
-const {InitBot, ListenUpdate, OnMessageNew, CheckText, SendMessage} = require('../../src');
+const {InitBot, ListenUpdate, OnMessageNew, CheckText, SendMessage} = require('@botjsx/vk');
 
 const config = {
   accessToken: process.env.ACCESS_TOKEN,
