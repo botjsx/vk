@@ -1,4 +1,5 @@
 const Bot = require('botjsx');
+const PropTypes = require('prop-types');
 const vkApi = require('./utils/vkApi');
 const LongPoll = require('./utils/LongPoll');
 const createReplyActions = require('./utils/createReplyActions');
@@ -13,6 +14,7 @@ function InitBot({
 }) {
   if (!accessToken) throw new Error('accessToken is required');
   if (!account) throw new Error('account is required');
+  const resolve = Bot.useAsync();
   const setContext = Bot.createContext();
   const useReplyAction = createReplyActions();
 
@@ -20,18 +22,25 @@ function InitBot({
 
   const longPoll = new LongPoll({
     access_token: accessToken,
-    group_id: account
-  });
-
-  setContext({
-    vkApi,
-    longPoll,
-    useReplyAction,
+    group_id: account,
     logger
   });
 
-  return children;
+  longPoll.init().then(() => {
+    setContext({
+      vkApi,
+      longPoll,
+      useReplyAction,
+      logger
+    });
+    resolve(children);
+  });
 }
+
+InitBot.propTypes = {
+  accessToken: PropTypes.string.isRequired,
+  account: PropTypes.string.isRequired
+};
 
 module.exports = InitBot;
 

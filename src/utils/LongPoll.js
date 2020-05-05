@@ -5,7 +5,6 @@ class LongPoll {
     this.access_token = access_token;
     this.group_id = group_id;
     this.logger = logger;
-    this.init();
   }
 
   getUpdates(callback) {
@@ -13,27 +12,30 @@ class LongPoll {
   }
 
   init() {
-    request.post('https://api.vk.com/method/groups.getLongPollServer', {
-      form: {
-        group_id: this.group_id,
-        access_token: this.access_token,
-        v: '5.101'
-      },
-      json: true
-    }, (err, res, body) => {
-      if (!err && res.statusCode === 200) {
-        if (body) {
-          if (body.error) {
-            this.logger.error(body.error);
-            return;
+    return new Promise((resolve, reject) => {
+      request.post('https://api.vk.com/method/groups.getLongPollServer', {
+        form: {
+          group_id: this.group_id,
+          access_token: this.access_token,
+          v: '5.101'
+        },
+        json: true
+      }, (err, res, body) => {
+        if (!err && res.statusCode === 200) {
+          if (body) {
+            if (body.error) {
+              if (this.logger) this.logger.error(body.error);
+              reject();
+              return;
+            }
+            this.server = body.response.server;
+            this.key = body.response.key;
+            this.ts = body.response.ts;
+            this.poll();
+            resolve();
           }
-          this.server = body.response.server;
-          this.key = body.response.key;
-          this.ts = body.response.ts;
-
-          this.poll();
         }
-      }
+      });
     });
   }
 
@@ -41,7 +43,7 @@ class LongPoll {
     request.post(`${this.server}?act=a_check&key=${this.key}&ts=${this.ts}&wait=25`, {json: true}, (err, res, body) => {
       if (!err && res.statusCode === 200) {
         if (body.failed && (body.failed === 2 || body.failed === 3)) {
-          this.logger.error(body);
+          if (this.logger) this.logger.error(body);
           this.init();
           return;
         }
