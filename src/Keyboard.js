@@ -1,7 +1,7 @@
 const Bot = require('botjsx');
 
 function Keyboard({oneTime, inline, children}) {
-  const run = Bot.useRun();
+  const run = Bot.useRunner();
   let buttons = [];
 
   if (Array.isArray(children)) {
