@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@botjsx/vk": "0.0.1",
-    "botjsx": "0.0.6",
+    "botjsx": "0.0.11",
     "dotenv-flow": "^3.1.0"
   }
 }

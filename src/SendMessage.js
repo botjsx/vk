@@ -17,7 +17,7 @@ function SendMessage({
   forwardMessages,
   attachment
 }) {
-  const resolve = Bot.useAsync();
+  const run = Bot.useRunner();
   const setContext = Bot.createContext();
   const vkApi = useVkApi();
   const update = useVkUpdate();
@@ -26,11 +26,11 @@ function SendMessage({
 
   if (!toUser) toUser = !toUsers && update ? update.object.from_id : undefined;
 
-  if (keyboard) keyboard = JSON.stringify(Bot.run(keyboard));
+  if (keyboard) keyboard = JSON.stringify(resolve(keyboard));
 
   if (payload) payload = JSON.stringify(payload);
 
-  if (toUser || toUsers) {
+  if ((attachment || message) && (toUser || toUsers)) {
     return vkApi.sendGroupMessage({
       message: message.toString(),
       user_id: toUser,
@@ -44,11 +44,11 @@ function SendMessage({
       setContext(res);
       if (res.response) {
         if (onReply) createReplyAction(toUser, onReply);
-        onSuccess && resolve(onSuccess);
+        onSuccess && run(onSuccess);
       } else {
-        onFail && resolve(onFail);
+        onFail && run(onFail);
       }
-      onSent && resolve(onSent);
+      onSent && run(onSent);
     });
   }
 }

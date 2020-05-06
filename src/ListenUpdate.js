@@ -4,7 +4,7 @@ const useLogger = require('./hooks/useLogger');
 
 function ListenUpdate({children}) {
   const longPoll = useLongPoll();
-  const resolve = Bot.useAsync();
+  const run = Bot.useRunner();
   const setContext = Bot.createContext();
   const logger = useLogger();
 
@@ -14,7 +14,7 @@ function ListenUpdate({children}) {
       if (!update.type) return;
       logger.info(update);
       setContext(update);
-      resolve(children);
+      run(children);
     });
   });
 }

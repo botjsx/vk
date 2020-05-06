@@ -14,7 +14,7 @@ function InitBot({
 }) {
   if (!accessToken) throw new Error('accessToken is required');
   if (!account) throw new Error('account is required');
-  const resolve = Bot.useAsync();
+  const run = Bot.useRunner();
   const setContext = Bot.createContext();
   const useReplyAction = createReplyActions();
 
@@ -33,7 +33,7 @@ function InitBot({
       useReplyAction,
       logger
     });
-    resolve(children);
+    run(children);
   });
 }
 

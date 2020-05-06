@@ -1,6 +1,6 @@
 {
   "name": "@botjsx/vk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/botjsx/vk#readme",
   "peerDependencies": {
-    "botjsx": "0.0.6"
+    "botjsx": "0.0.11"
   },
   "devDependencies": {
-    "botjsx": "0.0.6",
+    "botjsx": "0.0.11",
     "mocha": "^7.1.2",
     "prop-types": "^15.7.2",
     "shelljs": "^0.8.4",
