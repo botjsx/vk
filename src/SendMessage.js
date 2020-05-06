@@ -26,7 +26,7 @@ function SendMessage({
 
   if (!toUser) toUser = !toUsers && update ? update.object.from_id : undefined;
 
-  if (keyboard) keyboard = JSON.stringify(resolve(keyboard));
+  if (keyboard) keyboard = JSON.stringify(run(keyboard));
 
   if (payload) payload = JSON.stringify(payload);
 
