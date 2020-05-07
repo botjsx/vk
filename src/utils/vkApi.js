@@ -44,12 +44,12 @@ class VkApi {
           v: this.apiVersion
         },
       }, (err ,res, body) => {
-        if (err) {
-          reject(err);
+        if (err || body.error) {
+          reject(err || body.error);
           return;
         }
         if (!body.response) {
-          resolve(true);
+          resolve(false);
           return;
         }
         const result = body.response.is_allowed;
