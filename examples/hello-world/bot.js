@@ -4,7 +4,7 @@ const {InitBot, ListenUpdate, OnMessageNew, CheckText, SendMessage} = require('@
 
 const config = {
   accessToken: process.env.ACCESS_TOKEN,
-  account: process.env.ACCOUNT,
+  groupId: process.env.GROUP_ID,
   userAdmin: process.env.USER_ADMIN
 };
 
@@ -12,7 +12,7 @@ function MyBot() {
   return (
     <InitBot
       accessToken={config.accessToken}
-      account={config.account}
+      groupId={config.groupId}
       logger={console}
     >
       {() => console.log('bot started')}
