@@ -8,6 +8,7 @@ const ListenUpdate = require('./ListenUpdate');
 const OnMessageNew = require('./OnMessageNew');
 const ReplyAction = require('./ReplyAction');
 const CheckText = require('./CheckText');
+const GetAllConversations = require('./GetAllConversations');
 const useVkApi = require('./hooks/useVkApi');
 const useVkUpdate = require('./hooks/useVkUpdate');
 const useReplyAction = require('./hooks/useReplyAction');
@@ -23,6 +24,7 @@ module.exports = {
   ReplyAction,
   CheckText,
   OnMessageNew,
+  GetAllConversations,
   useReplyAction,
   useVkApi,
   useVkUpdate
