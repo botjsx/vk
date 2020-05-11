@@ -6,23 +6,23 @@ const createReplyActions = require('./utils/createReplyActions');
 
 function InitBot({
   accessToken,
-  account,
+  groupId,
   serviceAccessToken,
   userAccessToken,
   children,
   logger
 }) {
   if (!accessToken) throw new Error('accessToken is required');
-  if (!account) throw new Error('account is required');
+  if (!groupId) throw new Error('groupId is required');
   const run = Bot.useRunner();
   const setContext = Bot.createContext();
   const useReplyAction = createReplyActions();
 
-  vkApi.setSettings({accessToken, account, serviceAccessToken, userAccessToken});
+  vkApi.setSettings({accessToken, groupId, serviceAccessToken, userAccessToken});
 
   const longPoll = new LongPoll({
     access_token: accessToken,
-    group_id: account,
+    group_id: groupId,
     logger
   });
 
@@ -39,7 +39,7 @@ function InitBot({
 
 InitBot.propTypes = {
   accessToken: PropTypes.string.isRequired,
-  account: PropTypes.string.isRequired
+  groupId: PropTypes.string.isRequired
 };
 
 module.exports = InitBot;
