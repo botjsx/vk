@@ -18,8 +18,7 @@
     "cross-env": "^7.0.2"
   },
   "dependencies": {
-    "@botjsx/vk": "^0.0.3",
-    "botjsx": "^0.0.12",
-    "dotenv-flow": "^3.1.0"
+    "@botjsx/vk": "^0.0.7",
+    "botjsx": "^0.0.12"
   }
 }
