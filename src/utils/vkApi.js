@@ -3,7 +3,7 @@ const getRandomId = require('./getRandomId');
 
 class VkApi {
   constructor({settings} = {}) {
-    this.apiVersion = '5.101';
+    this.apiVersion = '5.103';
     this.settings = settings;
   }
 
@@ -32,7 +32,7 @@ class VkApi {
     });
   }
 
-  isMessagesFromGroupAllowed({user_id, group_id = this.settings['account']}) {
+  isMessagesFromGroupAllowed({user_id, group_id = this.settings['groupId']}) {
     if (+user_id < 0) return;
     return new Promise((resolve, reject) => {
       request.post('https://api.vk.com/method/messages.isMessagesFromGroupAllowed', {
@@ -62,7 +62,7 @@ class VkApi {
     return new Promise((resolve, reject) => {
       request.post('https://api.vk.com/method/wall.get', {
         form: {
-          owner_id: -1 * this.settings['account'],
+          owner_id: -1 * this.settings['groupId'],
           count,
           filter: 'owner',
           access_token: this.settings['serviceAccessToken'],
@@ -84,7 +84,7 @@ class VkApi {
     return new Promise((resolve, reject) => {
       request.post('https://api.vk.com/method/wall.getComments', {
         form: {
-          owner_id: -1 * this.settings['account'],
+          owner_id: -1 * this.settings['groupId'],
           post_id,
           count: 100,
           access_token: this.settings['serviceAccessToken'],
@@ -106,7 +106,7 @@ class VkApi {
     return new Promise((resolve, reject) => {
       request.post('https://api.vk.com/method/wall.getReposts', {
         form: {
-          owner_id: -1 * this.settings['account'],
+          owner_id: -1 * this.settings['groupId'],
           post_id,
           count: 1000,
           access_token: this.settings['userAccessToken'],
@@ -129,7 +129,7 @@ class VkApi {
       request.post('https://api.vk.com/method/likes.getList', {
         form: {
           type: 'post',
-          owner_id: -1 * this.settings['account'],
+          owner_id: -1 * this.settings['groupId'],
           item_id,
           count: 1000,
           access_token: this.settings['serviceAccessToken'],
@@ -147,7 +147,7 @@ class VkApi {
     });
   }
 
-  async sendGroupMessage({user_id, user_ids, group_id = this.settings['account'], message, attachment, keyboard, reply_to, forward_messages, payload, random_id = getRandomId()}) {
+  async sendGroupMessage({user_id, user_ids, group_id = this.settings['groupId'], message, attachment, keyboard, reply_to, forward_messages, payload, random_id = getRandomId()}) {
     return new Promise(async (resolve, reject) => {
       request.post('https://api.vk.com/method/messages.send', {
         form: {
@@ -178,7 +178,7 @@ class VkApi {
         form: {
           peer_id,
           type: 'typing',
-          group_id: this.settings['account'],
+          group_id: this.settings['groupId'],
           access_token: this.settings['accessToken'],
           v: this.apiVersion
         },
@@ -197,7 +197,7 @@ class VkApi {
     return new Promise((resolve, reject) => {
       request.post('https://api.vk.com/method/board.getComments', {
         form: {
-          group_id: this.settings['account'],
+          group_id: this.settings['groupId'],
           topic_id,
           count: 100,
           access_token: this.settings['serviceAccessToken'],
@@ -255,7 +255,7 @@ class VkApi {
     });
   }
 
-  runMethod(method, params) {
+  callMethod(method, params) {
     return new Promise(async (resolve, reject) => {
       request.post(`https://api.vk.com/method/${method}`, {
         form: {
@@ -283,7 +283,7 @@ class VkApi {
       request.post('https://api.vk.com/method/messages.edit', {
         form: {
           peer_id,
-          group_id: this.settings['account'],
+          group_id: this.settings['groupId'],
           message,
           attachment,
           message_id,
