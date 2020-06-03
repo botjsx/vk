@@ -1,8 +1,8 @@
 const Bot = require('botjsx');
-const InitBot = require('../InitBot');
+const VkBot = require('../VkBot');
 
 function useLongPoll() {
-  return Bot.useContext(InitBot).longPoll;
+  return Bot.useContext(VkBot).longPoll;
 }
 
 module.exports = useLongPoll;

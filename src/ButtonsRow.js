@@ -1,5 +1,11 @@
-function ButtonsRow({children}) {
-  return Array.isArray(children) ? children : [children];
+const Bot = require('botjsx');
+const Keyboard = require('./Keyboard');
+
+function ButtonsRow() {
+  const keyboard = Bot.useContext(Keyboard);
+  const buttonsRow = [];
+  keyboard.buttons.push(buttonsRow);
+  return buttonsRow;
 }
 
-module.exports = ButtonsRow;
+module.exports = Bot.createContext(ButtonsRow);

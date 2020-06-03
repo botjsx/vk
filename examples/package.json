@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node hello-world/index.js",
-    "start:debug": "node --inspect hello-world/build/bot.js",
+    "start:debug": "node --inspect-brk hello-world/index.js",
     "build": "babel --watch hello-world/bot.js --out-dir hello-world/build --source-maps"
   },
   "author": "",
@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "@botjsx/vk": "^0.0.7",
-    "botjsx": "^0.0.12"
+    "botjsx": "^0.1.1"
   }
 }

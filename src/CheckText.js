@@ -1,6 +1,6 @@
 const useVkUpdate = require('./hooks/useVkUpdate');
 
-function CheckText({text, children, update}) {
+function CheckText({text, update, children}) {
   update = update || useVkUpdate();
 
   const inputText = update.object.text;

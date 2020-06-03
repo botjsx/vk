@@ -3,7 +3,7 @@ const Keyboard = require('./Keyboard');
 const ButtonsRow = require('./ButtonsRow');
 const Button = require('./Button');
 const Event = require('./Event');
-const InitBot = require('./InitBot');
+const VkBot = require('./VkBot');
 const ListenUpdate = require('./ListenUpdate');
 const OnMessageNew = require('./OnMessageNew');
 const ReplyAction = require('./ReplyAction');
@@ -19,7 +19,7 @@ module.exports = {
   ButtonsRow,
   Button,
   Event,
-  InitBot,
+  VkBot,
   ListenUpdate,
   ReplyAction,
   CheckText,

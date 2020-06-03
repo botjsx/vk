@@ -1,22 +1,11 @@
 const Bot = require('botjsx');
 
-function Keyboard({oneTime, inline, children}) {
-  const run = Bot.useRunner();
-  let buttons = [];
-
-  if (Array.isArray(children)) {
-    buttons = children;
-  } else {
-    buttons.push(children);
-  }
-
-  if (buttons.length) buttons = run(buttons);
-
+function Keyboard({oneTime, inline}) {
   return {
     one_time: oneTime,
     inline,
-    buttons
+    buttons: []
   };
 }
 
-module.exports = Keyboard;
+module.exports = Bot.createContext(Keyboard);

@@ -1,8 +1,8 @@
 const Bot = require('botjsx');
-const InitBot = require('../InitBot');
+const VkBot = require('../VkBot');
 
 function useLogger() {
-  return Bot.useContext(InitBot).logger || {
+  return Bot.useContext(VkBot).logger || {
     log: () => {},
     info: () => {},
     debug: () => {},

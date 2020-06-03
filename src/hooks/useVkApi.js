@@ -1,8 +1,8 @@
 const Bot = require('botjsx');
-const InitBot = require('../InitBot');
+const VkBot = require('../VkBot');
 
 function useVkApi() {
-  return Bot.useContext(InitBot).vkApi;
+  return Bot.useContext(VkBot).vkApi;
 }
 
 module.exports = useVkApi;

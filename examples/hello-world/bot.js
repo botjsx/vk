@@ -1,6 +1,6 @@
 require('dotenv-flow').config();
-const Bot = require('botjsx');
-const {InitBot, ListenUpdate, OnMessageNew, CheckText, SendMessage} = require('@botjsx/vk');
+const Bot = require('../../node_modules/botjsx');
+const {VkBot, ListenUpdate, OnMessageNew, CheckText, SendMessage} = require('../../src');
 
 const config = {
   accessToken: process.env.ACCESS_TOKEN,
@@ -10,7 +10,7 @@ const config = {
 
 function MyBot() {
   return (
-    <InitBot
+    <VkBot
       accessToken={config.accessToken}
       groupId={config.groupId}
       logger={console}
@@ -30,7 +30,7 @@ function MyBot() {
           </CheckText>
         </OnMessageNew>
       </ListenUpdate>
-    </InitBot>
+    </VkBot>
   )
 }
 
