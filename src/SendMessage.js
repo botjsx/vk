@@ -20,11 +20,11 @@ function SendMessage({
   const run = Bot.useRunner();
   const setContext = Bot.createContext();
   const vkApi = useVkApi();
-  const update = useVkUpdate();
+  const update = !toUser && !toUsers ? useVkUpdate() : null;
   const createReplyAction = useReplyAction();
   let message = Array.isArray(children) ? children.join('') : children;
 
-  if (!toUser) toUser = !toUsers && update ? update.object.from_id : undefined;
+  if (update) toUser = update.object.from_id;
 
   if (keyboard) keyboard = JSON.stringify(run(keyboard));
 
