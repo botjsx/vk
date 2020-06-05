@@ -18,7 +18,7 @@ function SendMessage({
   attachment
 }) {
   const run = Bot.useRunner();
-  const [setContext] = Bot.createContext();
+  const setContext = Bot.createContext();
   const vkApi = useVkApi();
   const update = useVkUpdate();
   const createReplyAction = useReplyAction();

@@ -13,7 +13,6 @@ function MyBot() {
     <VkBot
       accessToken={config.accessToken}
       groupId={config.groupId}
-      logger={console}
     >
       {() => console.log('bot started')}
       <SendMessage

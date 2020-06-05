@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node hello-world/index.js",
     "start:debug": "node --inspect-brk hello-world/index.js",
-    "build": "babel --watch hello-world/bot.js --out-dir hello-world/build --source-maps"
+    "build": "babel --watch hello-world/bot.js --out-dir build --source-maps"
   },
   "author": "",
   "license": "ISC",
